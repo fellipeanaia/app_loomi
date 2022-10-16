@@ -1,3 +1,5 @@
+import 'package:app_loomi/model/repositories/repository.dart';
+import 'package:app_loomi/presenter/pokemon_presenter.dart';
 import 'package:app_loomi/view/cart_page.dart';
 import 'package:app_loomi/view/login_page.dart';
 import 'package:app_loomi/view/profile_page.dart';
@@ -5,9 +7,17 @@ import 'package:app_loomi/view/register_page.dart';
 import 'package:app_loomi/view/store_page.dart';
 import 'package:app_loomi/view/tutorial_page.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => PokemonPresenter(Repository()),
+      ),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -16,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Loomi',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
