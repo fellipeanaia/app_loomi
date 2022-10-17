@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:scroll_to_index/scroll_to_index.dart';
 import '../presenter/pokemon_presenter.dart';
 
 class StorePage extends StatefulWidget {
@@ -39,19 +39,21 @@ class _StorePageState extends State<StorePage> {
               children: [
                 Consumer<PokemonPresenter>(
                   builder: (_, p, w) {
-                    return ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: presenter.listaPokemons.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(75, 5, 75, 5),
-                            child: Image.network(
-                                presenter.listaPokemons[index].thumbnailImage ??
-                                    ''),
-                          ),
-                        );
-                      },
+                    return Expanded(
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: presenter.listaPokemons.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(75, 5, 75, 5),
+                              child: Image.network(presenter
+                                      .listaPokemons[index].thumbnailImage ??
+                                  ''),
+                            ),
+                          );
+                        },
+                      ),
                     );
                   },
                 ),
@@ -59,6 +61,14 @@ class _StorePageState extends State<StorePage> {
                   const Center(child: CircularProgressIndicator()),
               ],
             ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Card(
+            child: Padding(
+                padding: const EdgeInsets.fromLTRB(150, 100, 150, 100),
+                child: Column()),
           ),
           BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
