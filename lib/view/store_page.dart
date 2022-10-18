@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:scroll_to_index/scroll_to_index.dart';
 import '../presenter/pokemon_presenter.dart';
 
 class StorePage extends StatefulWidget {
@@ -33,32 +32,124 @@ class _StorePageState extends State<StorePage> {
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
           ),
-          SizedBox(
-            height: 250,
+          Card(
+            margin: const EdgeInsets.fromLTRB(40, 10, 40, 10),
             child: Stack(
               children: [
-                Consumer<PokemonPresenter>(
-                  builder: (_, p, w) {
-                    return Expanded(
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: presenter.listaPokemons.length,
-                        itemBuilder: (context, index) {
-                          return Card(
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(75, 5, 75, 5),
-                              child: Image.network(presenter
-                                      .listaPokemons[index].thumbnailImage ??
-                                  ''),
-                            ),
-                          );
-                        },
-                      ),
-                    );
-                  },
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(60, 10, 60, 90),
+                  child: Expanded(
+                      child: Image.asset('images/Suvinil_Classica.jpg')),
                 ),
-                if (context.watch<PokemonPresenter>().loading)
-                  const Center(child: CircularProgressIndicator()),
+                const Center(
+                    child: Padding(
+                  padding: EdgeInsets.only(top: 188),
+                  child: Text(
+                    'Tinta Suvinil Clássica',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 12, right: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                        height: 35,
+                        width: 90,
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(5)),
+                            color: Color(0xFFDADADA)),
+                        child: const Center(
+                          child: Text(
+                            'Indicação',
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 10, top: 75),
+                  child: GestureDetector(
+                    child: const IconButton(
+                      iconSize: 45,
+                      icon: Icon(Icons.arrow_back),
+                      color: Color(0xFFDADADA),
+                      onPressed: null,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 75, right: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      GestureDetector(
+                        child: const IconButton(
+                          iconSize: 45,
+                          icon: Icon(Icons.arrow_forward),
+                          color: Color(0xFFDADADA),
+                          onPressed: null,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(32, 225, 50, 10),
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(const Color(0xFF5B4DA7)),
+                      shape: MaterialStateProperty.all(
+                        const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(30),
+                              bottomLeft: Radius.circular(30)),
+                        ),
+                      ),
+                    ),
+                    onPressed: null,
+                    child: const Padding(
+                      padding: EdgeInsets.fromLTRB(5, 10, 0, 10),
+                      child: Text(
+                        'Como pintar',
+                        style: TextStyle(fontSize: 15, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(50, 225, 32, 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ElevatedButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color(0xFFA4A4A4)),
+                          shape: MaterialStateProperty.all(
+                            const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(30),
+                                  bottomRight: Radius.circular(30)),
+                            ),
+                          ),
+                        ),
+                        onPressed: null,
+                        child: const Padding(
+                          padding: EdgeInsets.fromLTRB(0, 10, 5, 10),
+                          child: Text(
+                            'Tirar dúvidas',
+                            style: TextStyle(fontSize: 15, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -67,7 +158,7 @@ class _StorePageState extends State<StorePage> {
           ),
           Card(
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(150, 100, 150, 100),
+                padding: const EdgeInsets.fromLTRB(155, 100, 155, 100),
                 child: Column()),
           ),
           BottomNavigationBar(
