@@ -1,6 +1,7 @@
 import 'package:app_loomi/model/repositories/repository.dart';
 import 'package:app_loomi/presenter/pokemon_presenter.dart';
 import 'package:app_loomi/view/cart_page.dart';
+import 'package:app_loomi/view/how_to_paint_page.dart';
 import 'package:app_loomi/view/login_page.dart';
 import 'package:app_loomi/view/profile_page.dart';
 import 'package:app_loomi/view/register_page.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/tutorial_page': (context) => TutorialPage(),
         '/cart_page': (context) => CartPage(),
         '/profile_page': (context) => ProfilePage(),
+        '/how_to_paint_page': (context) => HowToPaint()
       },
       initialRoute: '/',
       debugShowCheckedModeBanner: false,

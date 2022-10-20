@@ -114,7 +114,8 @@ class _StorePageState extends State<StorePage> {
                           ),
                         ),
                       ),
-                      onPressed: null,
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed('/how_to_paint_page'),
                       child: const Padding(
                         padding: EdgeInsets.fromLTRB(5, 10, 0, 10),
                         child: Text(
@@ -158,12 +159,81 @@ class _StorePageState extends State<StorePage> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: 1,
             ),
             Card(
-              child: Padding(
-                  padding: const EdgeInsets.fromLTRB(155, 100, 155, 100),
-                  child: Column()),
+              margin: const EdgeInsets.fromLTRB(40, 10, 40, 10),
+              child: Stack(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 30, top: 25),
+                    child: Text(
+                      'Diferenciais',
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, top: 70),
+                    child: Row(
+                      children: [
+                        Image.asset('images/brush.jpg'),
+                        const Text(
+                          '    Fácil de aplicar',
+                          style: TextStyle(fontSize: 15),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 30, top: 120),
+                    child: Row(
+                      children: [
+                        Image.asset('images/air.jpg'),
+                        const Text(
+                          '    Não deixa cheiro',
+                          style: TextStyle(fontSize: 15),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 30, top: 170, bottom: 25),
+                    child: Row(
+                      children: [
+                        Image.asset('images/bucket.jpg'),
+                        const Text(
+                          '    É só abrir, mexer e pintar',
+                          style: TextStyle(fontSize: 15),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(40, 10, 40, 20),
+              child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all(const Color(0xFF5B4DA7)),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                ),
+                onPressed: () => Navigator.of(context).pushNamed('/store_page'),
+                child: const Padding(
+                  padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                  child: Text(
+                    'Adicionar ao carrinho',
+                    style: TextStyle(fontSize: 20, color: Color(0xFFF3F3F3)),
+                  ),
+                ),
+              ),
             ),
             BottomNavigationBar(
               items: const <BottomNavigationBarItem>[
